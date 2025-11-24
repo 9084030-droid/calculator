@@ -17,7 +17,6 @@
             color: #1a1a1a;
         }
 
-        /* HEADER */
         header {
             background: #fff;
             border-bottom: 1px solid #e5e5e5;
@@ -27,7 +26,6 @@
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -36,50 +34,40 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .academy-name {
             font-size: 18px;
             font-weight: 600;
             color: #1a1a1a;
         }
-
         .academy-tagline {
             font-size: 13px;
             color: #7c8db0;
             margin-top: 2px;
         }
-
         .calc-title {
             font-size: 24px;
             font-weight: 700;
             color: #7c3aed;
         }
-
-        /* MAIN CONTAINER */
         .container {
             max-width: 1000px;
             margin: 60px auto;
             padding: 0 30px;
         }
-
         .page-title {
             text-align: center;
             margin-bottom: 50px;
         }
-
         .page-title h1 {
             font-size: 42px;
             margin-bottom: 15px;
             color: #1a1a1a;
             font-weight: 700;
         }
-
         .page-title p {
             font-size: 18px;
             color: #7c8db0;
         }
-
-        /* CALCULATOR GRID */
         .calc-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -89,19 +77,16 @@
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
-
         .calc-column {
             display: flex;
             flex-direction: column;
             gap: 25px;
         }
-
         .calc-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-
         .section-title {
             font-size: 14px;
             font-weight: 600;
@@ -109,19 +94,16 @@
             color: #7c3aed;
             letter-spacing: 0.5px;
         }
-
         .input-field {
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
-
         .input-field label {
             font-size: 14px;
             font-weight: 500;
             color: #1a1a1a;
         }
-
         .input-field input {
             padding: 10px 12px;
             border: 1px solid #e0e0e0;
@@ -129,32 +111,26 @@
             font-size: 14px;
             transition: all 0.3s;
         }
-
         .input-field input:focus {
             outline: none;
             border-color: #7c3aed;
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
         }
-
         .input-hint {
             font-size: 12px;
             color: #999;
         }
-
-        /* RESULTS */
         .results {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
         .result-box {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
             border-left: 3px solid #7c3aed;
         }
-
         .result-label {
             font-size: 12px;
             color: #999;
@@ -162,34 +138,27 @@
             letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
-
         .result-value {
             font-size: 28px;
             font-weight: 700;
             color: #7c3aed;
         }
-
         .result-value.positive {
             color: #10b981;
         }
-
         .result-value.negative {
             color: #ef4444;
         }
-
         .result-box.final {
             background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
             border-left: none;
         }
-
         .result-box.final .result-label {
             color: rgba(255,255,255,0.8);
         }
-
         .result-box.final .result-value {
             color: #fff;
         }
-
         .status-badge {
             display: inline-block;
             padding: 6px 12px;
@@ -198,43 +167,35 @@
             font-weight: 600;
             margin-top: 10px;
         }
-
         .badge-good {
             background: #d1fae5;
             color: #065f46;
         }
-
         .badge-warning {
             background: #fef3c7;
             color: #92400e;
         }
-
         .badge-bad {
             background: #fee2e2;
             color: #991b1b;
         }
-
-        /* RECOMMENDATIONS */
         .recommendations {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
             border: 1px solid #e0e0e0;
         }
-
         .recommendations h4 {
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 15px;
             color: #1a1a1a;
         }
-
         .rec-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
         .rec-item {
             font-size: 13px;
             line-height: 1.5;
@@ -244,19 +205,15 @@
             border-left: 3px solid #7c3aed;
             color: #1a1a1a;
         }
-
         .rec-item.critical {
             border-left-color: #ef4444;
             background: #fef2f2;
         }
-
-        /* BUTTONS */
         .button-group {
             display: flex;
             gap: 12px;
             margin-top: 20px;
         }
-
         button {
             flex: 1;
             padding: 12px;
@@ -267,29 +224,23 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .btn-reset {
             background: #f0f0f0;
             color: #1a1a1a;
             border: 1px solid #e0e0e0;
         }
-
         .btn-reset:hover {
             background: #e5e5e5;
         }
-
         .btn-copy {
             background: #7c3aed;
             color: #fff;
         }
-
         .btn-copy:hover {
             background: #6d28d9;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
         }
-
-        /* FOOTER */
         footer {
             background: #fff;
             border-top: 1px solid #e5e5e5;
@@ -299,28 +250,23 @@
             color: #999;
             font-size: 13px;
         }
-
         @media (max-width: 1024px) {
             .calc-grid {
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
-
             .page-title h1 {
                 font-size: 32px;
             }
-
             .calc-grid {
                 padding: 25px;
             }
-
             .calc-column {
                 gap: 20px;
             }
@@ -328,7 +274,6 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <div class="header-content">
             <div>
@@ -338,19 +283,14 @@
             <div class="calc-title">💰 Калькулятор</div>
         </div>
     </header>
-
-    <!-- MAIN -->
     <div class="container">
         <div class="page-title">
             <h1>Юнит-Экономика Wildberries</h1>
             <p>Рассчитайте реальную маржинальность вашего товара</p>
         </div>
-
         <div class="calc-grid">
-            <!-- LEFT COLUMN - INPUTS -->
             <div class="calc-column">
                 <form id="calcForm">
-                    <!-- ЦЕНА И СЕБЕСТОИМОСТЬ -->
                     <div class="calc-section">
                         <div class="section-title">📍 Цена и себестоимость</div>
                         <div class="input-field">
@@ -372,8 +312,6 @@
                             <input type="number" id="logisticsWB" value="25" step="1">
                         </div>
                     </div>
-
-                    <!-- ФУЛФИЛМЕНТ -->
                     <div class="calc-section">
                         <div class="section-title">📦 Фулфилмент</div>
                         <div class="input-field">
@@ -398,8 +336,6 @@
                             <input type="number" id="deliveryReturn" value="38" step="1">
                         </div>
                     </div>
-
-                    <!-- КОМИССИИ -->
                     <div class="calc-section">
                         <div class="section-title">📊 Выкупаемость и комиссии</div>
                         <div class="input-field">
@@ -415,18 +351,12 @@
                             <input type="number" id="advertising" value="10" step="0.5">
                         </div>
                         <div class="input-field">
-                            <label>Прочие расходы (руб)</label>
-                            <input type="number" id="other" value="10" step="1">
-                        </div>
-                        <div class="input-field">
                             <label>Ставка налога (%)</label>
                             <input type="number" id="tax" value="6" step="1">
                         </div>
                     </div>
                 </form>
             </div>
-
-            <!-- RIGHT COLUMN - RESULTS -->
             <div class="calc-column">
                 <div class="results">
                     <div class="result-box">
@@ -443,12 +373,10 @@
                         <div id="statusBadge"></div>
                     </div>
                 </div>
-
                 <div class="recommendations">
                     <h4>💡 Рекомендации</h4>
                     <div class="rec-list" id="recommendationsList"></div>
                 </div>
-
                 <div class="button-group">
                     <button class="btn-reset" type="button" onclick="resetForm()">Очистить</button>
                     <button class="btn-copy" type="button" onclick="copyResults()">Скопировать</button>
@@ -456,13 +384,10 @@
             </div>
         </div>
     </div>
-
-    <!-- FOOTER -->
     <footer>
         <p>© 2025 Интернет-Академия Елены Чуриковой | Курс "Менеджер маркетплейса Wildberries"</p>
         <p style="margin-top: 10px;">Калькулятор работает локально • Никакие данные не отправляются на серверы</p>
     </footer>
-
     <script>
         const inputs = document.querySelectorAll('input[type="number"]');
 
@@ -479,21 +404,22 @@
             const buyout = parseFloat(document.getElementById('buyout').value) || 80;
             const commission = parseFloat(document.getElementById('commission').value) || 0;
             const advertising = parseFloat(document.getElementById('advertising').value) || 0;
-            const other = parseFloat(document.getElementById('other').value) || 0;
             const tax = parseFloat(document.getElementById('tax').value) || 0;
+
+            // 1% брака
+            const defectRate = price * 0.01;
 
             const storageExpense = turnover > 60 ? storage * (turnover - 60) : 0;
             const adsExpense = price * advertising / 100;
             const commissionExpense = price * commission / 100;
             const taxExpense = price * tax / 100;
 
-            const totalExpenses = cost + packaging + logisticsWB + acceptance + storageExpense + deliveryClient + deliveryReturn + adsExpense + commissionExpense + other + taxExpense;
+            const totalExpenses = cost + packaging + logisticsWB + acceptance + storageExpense + deliveryClient + deliveryReturn + adsExpense + commissionExpense + defectRate + taxExpense;
             const buyoutRatio = buyout / 100;
             const expensesPerBuyout = totalExpenses / buyoutRatio;
             const profit = price - expensesPerBuyout;
             const margin = price > 0 ? (profit / price * 100) : 0;
 
-            // Обновляем результаты
             document.getElementById('resultTotal').textContent = formatNumber(expensesPerBuyout) + ' ₽';
 
             const profitElement = document.getElementById('resultProfit');
@@ -529,7 +455,6 @@
 
         function generateRecommendations(price, cost, packaging, commission, advertising, margin, buyout, turnover, storageExpense) {
             let recommendations = [];
-
             if (cost > price * 0.45) {
                 recommendations.push({
                     type: 'critical',
@@ -541,7 +466,6 @@
                     text: '🟡 Себестоимость близка к критической — рассмотрите замену поставщика'
                 });
             }
-
             if (buyout < 70) {
                 recommendations.push({
                     type: 'critical',
@@ -553,21 +477,18 @@
                     text: '💡 Выкуп ниже среднего — запустите рекламу'
                 });
             }
-
             if (advertising > 15) {
                 recommendations.push({
                     type: 'info',
                     text: '💡 Реклама >15% — проверьте эффективность (ROAS)'
                 });
             }
-
             if (commission > 20) {
                 recommendations.push({
                     type: 'critical',
                     text: '🔴 Комиссия WB очень высокая — пересмотрите условия'
                 });
             }
-
             if (storageExpense > 0) {
                 recommendations.push({
                     type: 'critical',
@@ -579,7 +500,6 @@
                     text: '💡 Оборачиваемость >50 дней — стремитесь к 30–45'
                 });
             }
-
             if (margin >= 25) {
                 recommendations.push({
                     type: 'info',
@@ -596,19 +516,16 @@
                     text: '💡 Маржа 5–10% — требуется оптимизация затрат'
                 });
             }
-
             let html = recommendations.length > 0 ? '' : '<div class="rec-item">✅ Показатели в норме — продолжайте текущую стратегию</div>';
             recommendations.forEach(rec => {
                 html += `<div class="rec-item ${rec.type === 'critical' ? 'critical' : ''}">${rec.text}</div>`;
             });
-
             document.getElementById('recommendationsList').innerHTML = html;
         }
 
         function formatNumber(num) {
             return Math.round(num * 100) / 100;
         }
-
         function resetForm() {
             document.getElementById('price').value = '1000';
             document.getElementById('cost').value = '400';
@@ -622,28 +539,22 @@
             document.getElementById('buyout').value = '80';
             document.getElementById('commission').value = '15';
             document.getElementById('advertising').value = '10';
-            document.getElementById('other').value = '10';
             document.getElementById('tax').value = '6';
             calculate();
         }
-
         function copyResults() {
             const margin = document.getElementById('resultMargin').textContent;
             const profit = document.getElementById('resultProfit').textContent;
             const total = document.getElementById('resultTotal').textContent;
-
             const results = `Калькулятор Юнит-Экономики\nМаржинальность: ${margin}\nЧистая прибыль: ${profit}\nРасходы: ${total}`;
-
             navigator.clipboard.writeText(results).then(() => {
                 alert('✅ Скопировано!');
             });
         }
-
         inputs.forEach(input => {
             input.addEventListener('input', calculate);
             input.addEventListener('change', calculate);
         });
-
         calculate();
     </script>
 </body>
