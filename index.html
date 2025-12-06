@@ -3,628 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор Юнит-Экономики | Интернет-Академия Елены Чуриковой</title>
+    <title>Калькулятор поставки на маркетплейс</title>
     <style>
+        :root {
+            --color-primary: #2180a3;
+            --color-primary-hover: #1d748a;
+            --color-background: #f5f5f2;
+            --color-surface: #ffffff;
+            --color-text: #1f2121;
+            --color-text-secondary: #626c71;
+            --color-border: #e0e0dc;
+            --color-success: #208c8d;
+            --color-error: #c0152f;
+            --space-16: 16px;
+            --space-8: 8px;
+            --radius-base: 8px;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f8f9fa;
-            color: #1a1a1a;
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid #e5e5e5;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .academy-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .academy-tagline {
-            font-size: 13px;
-            color: #7c8db0;
-            margin-top: 2px;
-        }
-
-        .calc-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #7c3aed;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-background);
+            margin: 0;
+            padding: 20px;
+            color: var(--color-text);
         }
 
         .container {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 30px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .page-title {
+        header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
-        .page-title h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-            font-weight: 700;
+        h1 {
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            color: var(--color-text);
         }
 
-        .page-title p {
-            font-size: 18px;
-            color: #7c8db0;
-        }
-
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        }
-
-        .calc-column {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .calc-section {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .section-title {
+        .subtitle {
+            color: var(--color-text-secondary);
             font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #7c3aed;
-            letter-spacing: 0.5px;
+            margin: 0;
         }
 
-        .input-field {
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        .input-help {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: 16px;
+            color: var(--color-text);
+            background: var(--color-surface);
+            transition: border-color 0.2s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(33, 128, 163, 0.1);
+        }
+
+        .input-group {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
+            gap: 12px;
+            align-items: flex-end;
         }
 
-        .input-field label {
+        .input-group input {
+            flex: 1;
+        }
+
+        .input-suffix {
+            color: var(--color-text-secondary);
             font-size: 14px;
             font-weight: 500;
-            color: #1a1a1a;
+            white-space: nowrap;
+            padding: 10px 0;
         }
 
-        .input-field input {
-            padding: 10px 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .input-field input:focus {
-            outline: none;
-            border-color: #7c3aed;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-        }
-
-        .input-hint {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .results {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .result-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 3px solid #7c3aed;
+        .result-card {
+            background: linear-gradient(135deg, #f0f8fa 0%, #e8f4f7 100%);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-base);
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
         }
 
         .result-label {
-            font-size: 12px;
-            color: #999;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            font-weight: 600;
         }
 
         .result-value {
-            font-size: 28px;
+            font-size: 42px;
             font-weight: 700;
-            color: #7c3aed;
+            color: var(--color-primary);
+            margin: 0;
+            line-height: 1.2;
         }
 
-        .result-value.positive {
-            color: #10b981;
-        }
-
-        .result-value.negative {
-            color: #ef4444;
-        }
-
-        .result-box.final {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-            border-left: none;
-        }
-
-        .result-box.final .result-label {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .result-box.final .result-value {
-            color: #fff;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .badge-good {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-warning {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge-bad {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .recommendations {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .recommendations h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-
-        .rec-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .rec-item {
-            font-size: 13px;
-            line-height: 1.5;
-            padding: 10px 12px;
-            background: #fff;
-            border-radius: 6px;
-            border-left: 3px solid #7c3aed;
-            color: #1a1a1a;
-        }
-
-        .rec-item.critical {
-            border-left-color: #ef4444;
-            background: #fef2f2;
+        .result-unit {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-top: 8px;
         }
 
         .button-group {
             display: flex;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         button {
             flex: 1;
-            padding: 12px;
+            padding: 12px 16px;
             border: none;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: var(--radius-base);
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
+        }
+
+        .btn-calculate {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            background: var(--color-primary-hover);
         }
 
         .btn-reset {
-            background: #f0f0f0;
-            color: #1a1a1a;
-            border: 1px solid #e0e0e0;
+            background: #f0f0ee;
+            color: var(--color-text);
         }
 
         .btn-reset:hover {
-            background: #e5e5e5;
+            background: #e0e0dc;
         }
 
-        .btn-copy {
-            background: #7c3aed;
-            color: #fff;
-        }
-
-        .btn-copy:hover {
-            background: #6d28d9;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-        }
-
-        footer {
-            background: #fff;
-            border-top: 1px solid #e5e5e5;
-            padding: 40px 0;
-            margin-top: 80px;
-            text-align: center;
-            color: #999;
+        .info-box {
+            background: #f0f8fa;
+            border-left: 4px solid var(--color-primary);
+            padding: 12px;
+            border-radius: 4px;
             font-size: 13px;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
-        @media (max-width: 1024px) {
-            .calc-grid {
-                grid-template-columns: 1fr;
-            }
+        .info-box strong {
+            color: var(--color-primary);
         }
 
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
+        .breakdown {
+            background: #fafafa;
+            border-radius: var(--radius-base);
+            padding: 16px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
 
-            .page-title h1 {
-                font-size: 32px;
-            }
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
 
-            .calc-grid {
-                padding: 25px;
-            }
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
 
-            .calc-column {
-                gap: 20px;
-            }
+        .breakdown-row.total {
+            font-weight: 600;
+            color: var(--color-text);
+            padding-top: 12px;
+            border-top: 2px solid var(--color-border);
+        }
+
+        .breakdown-label {
+            flex: 1;
+        }
+
+        .breakdown-value {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .share-box {
+            background: #f0f8fa;
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius-base);
+            padding: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .share-box h4 {
+            margin: 0 0 12px 0;
+            color: var(--color-text);
+            font-size: 14px;
+        }
+
+        .share-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: 13px;
+            color: var(--color-text);
+            background: white;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+
+        .share-btn {
+            background: var(--color-primary);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .share-btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .copy-success {
+            color: var(--color-success);
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div>
-                <div class="academy-name">Интернет-Академия Елены Чуриковой</div>
-                <div class="academy-tagline">Профессия: Менеджер маркетплейса</div>
-            </div>
-            <div class="calc-title">💰 Калькулятор</div>
-        </div>
-    </header>
-
     <div class="container">
-        <div class="page-title">
-            <h1>Юнит-Экономика Wildberries</h1>
-            <p>Рассчитайте реальную маржинальность вашего товара</p>
-        </div>
+        <header>
+            <h1>📦 Калькулятор поставки</h1>
+            <p class="subtitle">Рассчитайте объем товара для поставки на маркетплейс</p>
+        </header>
 
-        <div class="calc-grid">
-            <div class="calc-column">
-                <form id="calcForm">
-                    <div class="calc-section">
-                        <div class="section-title">📍 Цена и себестоимость</div>
-                        <div class="input-field">
-                            <label>Цена с СПП (руб)</label>
-                            <input type="number" id="price" value="1000" step="1">
-                            <span class="input-hint">Сколько реально поступает за продажу</span>
-                        </div>
-                        <div class="input-field">
-                            <label>Себестоимость (руб)</label>
-                            <input type="number" id="cost" value="400" step="1">
-                            <span class="input-hint">Цена закупки у поставщика</span>
-                        </div>
-                        <div class="input-field">
-                            <label>Упаковка и маркировка (руб)</label>
-                            <input type="number" id="packaging" value="20" step="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Логистика до WB (руб)</label>
-                            <input type="number" id="logisticsWB" value="25" step="1">
-                        </div>
-                    </div>
-
-                    <div class="calc-section">
-                        <div class="section-title">📦 Фулфилмент</div>
-                        <div class="input-field">
-                            <label>Тариф на приемку (руб)</label>
-                            <input type="number" id="acceptance" value="8" step="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Оборачиваемость (дней)</label>
-                            <input type="number" id="turnover" value="45" step="1">
-                            <span class="input-hint">За сколько дней продаётся</span>
-                        </div>
-                        <div class="input-field">
-                            <label>Тариф хранения (руб/день/л)</label>
-                            <input type="number" id="storage" value="0" step="0.1">
-                        </div>
-                        <div class="input-field">
-                            <label>Доставка до ПВЗ (руб)</label>
-                            <input type="number" id="deliveryClient" value="38" step="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Доставка обратно (руб)</label>
-                            <input type="number" id="deliveryReturn" value="38" step="1">
-                        </div>
-                    </div>
-
-                    <div class="calc-section">
-                        <div class="section-title">📊 Выкупаемость и комиссии</div>
-                        <div class="input-field">
-                            <label>Процент выкупа (%)</label>
-                            <input type="number" id="buyout" value="80" step="1" min="1" max="100">
-                        </div>
-                        <div class="input-field">
-                            <label>Комиссия WB (%)</label>
-                            <input type="number" id="commission" value="15" step="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Доля расходов на рекламу (%)</label>
-                            <input type="number" id="advertising" value="10" step="0.5">
-                        </div>
-                        <div class="input-field">
-                            <label>Ставка налога (%)</label>
-                            <input type="number" id="tax" value="6" step="1">
-                        </div>
-                    </div>
-                </form>
+        <div class="card">
+            <div class="info-box">
+                <strong>Как это работает:</strong> Введите данные ниже, и система автоматически рассчитает, сколько товара нужно отгрузить, чтобы обеспечить запас на нужный период.
             </div>
 
-            <div class="calc-column">
-                <div class="results">
-                    <div class="result-box">
-                        <div class="result-label">Расходы на 1 выкупленный</div>
-                        <div class="result-value" id="resultTotal">0 ₽</div>
-                    </div>
-                    <div class="result-box">
-                        <div class="result-label">Чистая прибыль</div>
-                        <div class="result-value" id="resultProfit">0 ₽</div>
-                    </div>
-                    <div class="result-box final">
-                        <div class="result-label">Маржинальность</div>
-                        <div class="result-value" id="resultMargin">0%</div>
-                        <div id="statusBadge"></div>
-                    </div>
+            <form id="calculatorForm">
+                <div class="form-group">
+                    <label for="prodazhi">Кол-во продаж за период, шт.</label>
+                    <input type="number" id="prodazhi" placeholder="Например: 845" min="0" step="1">
+                    <div class="input-help">Сколько товаров было продано (включая returns)</div>
                 </div>
 
-                <div class="recommendations">
-                    <h4>💡 Рекомендации</h4>
-                    <div class="rec-list" id="recommendationsList"></div>
+                <div class="form-group">
+                    <label for="days_available">Дни в наличии, дн.</label>
+                    <input type="number" id="days_available" placeholder="Например: 30" min="1" step="1">
+                    <div class="input-help">Сколько дней товар был доступен на складе</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="period_zapasa">Период запаса (цель), дн.</label>
+                    <input type="number" id="period_zapasa" placeholder="Например: 30" min="1" step="1">
+                    <div class="input-help">На сколько дней торговли вы хотите запас</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ostatok">Текущий остаток на FBO, шт.</label>
+                    <input type="number" id="ostatok" placeholder="Например: 44" min="0" step="1">
+                    <div class="input-help">Сколько товара сейчас на складе маркетплейса</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="v_puti">Товары в пути (едят от вас), шт.</label>
+                    <input type="number" id="v_puti" placeholder="Например: 24" min="0" step="1">
+                    <div class="input-help">Товары, которые уже отправлены и едят на склад</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="u_klienta">Товары у клиента (примерка/доставка), шт.</label>
+                    <input type="number" id="u_klienta" placeholder="Например: 5" min="0" step="1">
+                    <div class="input-help">Товары на руках у клиентов (часть вернется)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vykup">Процент выкупа, %</label>
+                    <input type="number" id="vykup" placeholder="Например: 30" min="0" max="100" step="0.1">
+                    <div class="input-help">Какой % товара остается у клиента (не возвращается)</div>
                 </div>
 
                 <div class="button-group">
-                    <button class="btn-reset" type="button" onclick="resetForm()">Очистить</button>
-                    <button class="btn-copy" type="button" onclick="copyResults()">Скопировать</button>
+                    <button type="button" class="btn-calculate" onclick="calculate()">Рассчитать</button>
+                    <button type="reset" class="btn-reset">Очистить</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="resultBlock" style="display: none;">
+            <div class="result-card">
+                <div class="result-label">Нужно отгрузить товара</div>
+                <p class="result-value" id="resultValue">0</p>
+                <div class="result-unit">единиц товара</div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0; color: var(--color-text);">📊 Подробный расчет</h3>
+                
+                <div class="breakdown">
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Скорость продаж (ССП):</span>
+                        <span class="breakdown-value" id="ssp">0</span> шт/день
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Потребность на период:</span>
+                        <span class="breakdown-value" id="potrebnost">0</span> шт
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Вернется от клиентов (невыкуп):</span>
+                        <span class="breakdown-value" id="vozvrat">0</span> шт
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Остаток на складе:</span>
+                        <span class="breakdown-value" id="breakdown_ostatok">0</span> шт
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Товары в пути:</span>
+                        <span class="breakdown-value" id="breakdown_v_puti">0</span> шт
+                    </div>
+                    <div class="breakdown-row total">
+                        <span class="breakdown-label">Всего доступно:</span>
+                        <span class="breakdown-value" id="vsego_dostupno">0</span> шт
+                    </div>
+                </div>
+
+                <div class="share-box">
+                    <h4>🔗 Поделиться калькулятором</h4>
+                    <input type="text" class="share-input" id="shareLink" readonly>
+                    <button class="share-btn" onclick="copyToClipboard()">📋 Копировать ссылку</button>
+                    <div class="copy-success" id="copySuccess">✓ Ссылка скопирована!</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2025 Интернет-Академия Елены Чуриковой | Курс "Менеджер маркетплейса Wildberries"</p>
-        <p style="margin-top: 10px;">Калькулятор работает локально • Никакие данные не отправляются на серверы</p>
-    </footer>
-
     <script>
-        const inputs = document.querySelectorAll('input[type="number"]');
-
         function calculate() {
-            const price = parseFloat(document.getElementById('price').value) || 0;
-            const cost = parseFloat(document.getElementById('cost').value) || 0;
-            const packaging = parseFloat(document.getElementById('packaging').value) || 0;
-            const logisticsWB = parseFloat(document.getElementById('logisticsWB').value) || 0;
-            const acceptance = parseFloat(document.getElementById('acceptance').value) || 0;
-            const turnover = parseFloat(document.getElementById('turnover').value) || 0;
-            const storage = parseFloat(document.getElementById('storage').value) || 0;
-            const deliveryClient = parseFloat(document.getElementById('deliveryClient').value) || 0;
-            const deliveryReturn = parseFloat(document.getElementById('deliveryReturn').value) || 0;
-            const buyout = parseFloat(document.getElementById('buyout').value) || 80;
-            const commission = parseFloat(document.getElementById('commission').value) || 0;
-            const advertising = parseFloat(document.getElementById('advertising').value) || 0;
-            const tax = parseFloat(document.getElementById('tax').value) || 0;
+            // Получаем значения из форм
+            const prodazhi = parseFloat(document.getElementById('prodazhi').value);
+            const days_available = parseFloat(document.getElementById('days_available').value);
+            const period_zapasa = parseFloat(document.getElementById('period_zapasa').value);
+            const ostatok = parseFloat(document.getElementById('ostatok').value);
+            const v_puti = parseFloat(document.getElementById('v_puti').value);
+            const u_klienta = parseFloat(document.getElementById('u_klienta').value);
+            const vykup = parseFloat(document.getElementById('vykup').value);
 
-            // 1% брака автоматически
-            const defectRate = price * 0.01;
-
-            const storageExpense = turnover > 60 ? storage * (turnover - 60) : 0;
-            const adsExpense = price * advertising / 100;
-            const commissionExpense = price * commission / 100;
-            const taxExpense = price * tax / 100;
-
-            const totalExpenses = cost + packaging + logisticsWB + acceptance + storageExpense + deliveryClient + deliveryReturn + adsExpense + commissionExpense + defectRate + taxExpense;
-            const buyoutRatio = buyout / 100;
-            const expensesPerBuyout = totalExpenses / buyoutRatio;
-            const profit = price - expensesPerBuyout;
-            const margin = price > 0 ? (profit / price * 100) : 0;
-
-            document.getElementById('resultTotal').textContent = formatNumber(expensesPerBuyout) + ' ₽';
-
-            const profitElement = document.getElementById('resultProfit');
-            profitElement.textContent = formatNumber(profit) + ' ₽';
-            profitElement.classList.remove('negative', 'positive');
-            profitElement.classList.add(profit >= 0 ? 'positive' : 'negative');
-
-            const marginElement = document.getElementById('resultMargin');
-            marginElement.textContent = formatNumber(margin) + '%';
-            marginElement.classList.remove('negative', 'positive', 'warning');
-            if (margin >= 20) {
-                marginElement.classList.add('positive');
-            } else if (margin >= 10) {
-                marginElement.classList.add('warning');
-            } else {
-                marginElement.classList.add('negative');
+            // Валидация
+            if (!prodazhi || !days_available || !period_zapasa) {
+                alert('Пожалуйста, заполните обязательные поля: Кол-во продаж, Дни в наличии, Период запаса');
+                return;
             }
 
-            const statusBadge = document.getElementById('statusBadge');
-            if (margin >= 20) {
-                statusBadge.innerHTML = '<span class="status-badge badge-good">✅ Отличный товар!</span>';
-            } else if (margin >= 10) {
-                statusBadge.innerHTML = '<span class="status-badge badge-warning">⚠️ Нужна оптимизация</span>';
-            } else if (margin > 0) {
-                statusBadge.innerHTML = '<span class="status-badge badge-warning">⚠️ Рискованно</span>';
-            } else {
-                statusBadge.innerHTML = '<span class="status-badge badge-bad">❌ Убыток!</span>';
+            // Шаг 1: Считаем ССП (Среднесуточная скорость продаж)
+            const ssp = prodazhi / days_available;
+
+            // Шаг 2: Потребность на период запаса
+            const potrebnost = ssp * period_zapasa;
+
+            // Шаг 3: Считаем возвраты (невыкуп)
+            const procent_vozvrata = (100 - vykup) / 100;
+            const vozvrat = u_klienta * procent_vozvrata;
+
+            // Шаг 4: Всего доступно
+            const vsego_dostupno = ostatok + v_puti + vozvrat;
+
+            // Шаг 5: Сколько нужно отгрузить
+            let k_postavke = potrebnost - vsego_dostupno;
+            
+            // Округляем в большую сторону
+            k_postavke = Math.ceil(k_postavke);
+            
+            // Если результат отрицательный, показываем 0 (товара уже достаточно)
+            if (k_postavke < 0) {
+                k_postavke = 0;
             }
 
-            generateRecommendations(price, cost, packaging, commission, advertising, margin, buyout, turnover, storageExpense);
-        }
+            // Выводим результаты
+            document.getElementById('resultValue').textContent = k_postavke.toFixed(0);
+            document.getElementById('ssp').textContent = ssp.toFixed(2);
+            document.getElementById('potrebnost').textContent = potrebnost.toFixed(0);
+            document.getElementById('vozvrat').textContent = vozvrat.toFixed(2);
+            document.getElementById('breakdown_ostatok').textContent = ostatok.toFixed(0);
+            document.getElementById('breakdown_v_puti').textContent = v_puti.toFixed(0);
+            document.getElementById('vsego_dostupno').textContent = vsego_dostupno.toFixed(2);
 
-        function generateRecommendations(price, cost, packaging, commission, advertising, margin, buyout, turnover, storageExpense) {
-            let recommendations = [];
-
-            if (cost > price * 0.45) {
-                recommendations.push({
-                    type: 'critical',
-                    text: '🔴 Себестоимость >45% — найдите поставщика с ценой пониже'
-                });
-            } else if (cost > price * 0.40) {
-                recommendations.push({
-                    type: 'info',
-                    text: '🟡 Себестоимость близка к критической — рассмотрите замену поставщика'
-                });
-            }
-
-            if (buyout < 70) {
-                recommendations.push({
-                    type: 'critical',
-                    text: '🔴 Выкуп <70% — улучшайте карточку, фото и отзывы'
-                });
-            } else if (buyout < 80) {
-                recommendations.push({
-                    type: 'info',
-                    text: '💡 Выкуп ниже среднего — запустите рекламу'
-                });
-            }
-
-            if (advertising > 15) {
-                recommendations.push({
-                    type: 'info',
-                    text: '💡 Реклама >15% — проверьте эффективность (ROAS)'
-                });
-            }
-
-            if (commission > 20) {
-                recommendations.push({
-                    type: 'critical',
-                    text: '🔴 Комиссия WB очень высокая — пересмотрите условия'
-                });
-            }
-
-            if (storageExpense > 0) {
-                recommendations.push({
-                    type: 'critical',
-                    text: '🔴 Хранение >60 дней — ускорьте продажи через рекламу'
-                });
-            } else if (turnover > 50) {
-                recommendations.push({
-                    type: 'info',
-                    text: '💡 Оборачиваемость >50 дней — стремитесь к 30–45'
-                });
-            }
-
-            if (margin >= 25) {
-                recommendations.push({
-                    type: 'info',
-                    text: '✅ Отличная маржа! Масштабируйте товар'
-                });
-            } else if (margin < 5) {
-                recommendations.push({
-                    type: 'critical',
-                    text: '🔴 Маржа критична — поднимайте цену или уходите с товара'
-                });
-            } else if (margin < 10) {
-                recommendations.push({
-                    type: 'info',
-                    text: '💡 Маржа 5–10% — требуется оптимизация затрат'
-                });
-            }
-
-            let html = recommendations.length > 0 ? '' : '<div class="rec-item">✅ Показатели в норме — продолжайте текущую стратегию</div>';
-            recommendations.forEach(rec => {
-                html += `<div class="rec-item ${rec.type === 'critical' ? 'critical' : ''}">${rec.text}</div>`;
+            // Генерируем ссылку с параметрами
+            const params = new URLSearchParams({
+                prodazhi: prodazhi,
+                days_available: days_available,
+                period_zapasa: period_zapasa,
+                ostatok: ostatok,
+                v_puti: v_puti,
+                u_klienta: u_klienta,
+                vykup: vykup
             });
+            const shareLink = window.location.href.split('?')[0] + '?' + params.toString();
+            document.getElementById('shareLink').value = shareLink;
 
-            document.getElementById('recommendationsList').innerHTML = html;
+            // Показываем блок с результатом
+            document.getElementById('resultBlock').style.display = 'block';
+            
+            // Скролим к результату
+            document.getElementById('resultBlock').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function formatNumber(num) {
-            return Math.round(num * 100) / 100;
+        // Загружаем параметры из URL при загрузке страницы
+        function loadFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('prodazhi')) {
+                document.getElementById('prodazhi').value = params.get('prodazhi');
+                document.getElementById('days_available').value = params.get('days_available');
+                document.getElementById('period_zapasa').value = params.get('period_zapasa');
+                document.getElementById('ostatok').value = params.get('ostatok');
+                document.getElementById('v_puti').value = params.get('v_puti');
+                document.getElementById('u_klienta').value = params.get('u_klienta');
+                document.getElementById('vykup').value = params.get('vykup');
+                calculate();
+            }
         }
 
-        function resetForm() {
-            document.getElementById('price').value = '1000';
-            document.getElementById('cost').value = '400';
-            document.getElementById('packaging').value = '20';
-            document.getElementById('logisticsWB').value = '25';
-            document.getElementById('acceptance').value = '8';
-            document.getElementById('turnover').value = '45';
-            document.getElementById('storage').value = '0';
-            document.getElementById('deliveryClient').value = '38';
-            document.getElementById('deliveryReturn').value = '38';
-            document.getElementById('buyout').value = '80';
-            document.getElementById('commission').value = '15';
-            document.getElementById('advertising').value = '10';
-            document.getElementById('tax').value = '6';
-            calculate();
+        // Копируем ссылку в буфер обмена
+        function copyToClipboard() {
+            const shareLink = document.getElementById('shareLink');
+            shareLink.select();
+            document.execCommand('copy');
+            
+            const successMsg = document.getElementById('copySuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 2000);
         }
 
-        function copyResults() {
-            const margin = document.getElementById('resultMargin').textContent;
-            const profit = document.getElementById('resultProfit').textContent;
-            const total = document.getElementById('resultTotal').textContent;
-
-            const results = `Калькулятор Юнит-Экономики\nМаржинальность: ${margin}\nЧистая прибыль: ${profit}\nРасходы: ${total}`;
-
-            navigator.clipboard.writeText(results).then(() => {
-                alert('✅ Скопировано!');
-            });
-        }
-
-        inputs.forEach(input => {
-            input.addEventListener('input', calculate);
-            input.addEventListener('change', calculate);
+        // Считаем при нажатии Enter
+        document.getElementById('calculatorForm').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                calculate();
+            }
         });
 
-        calculate();
+        // Загружаем параметры при загрузке страницы
+        window.addEventListener('load', loadFromURL);
     </script>
 </body>
 </html>
